@@ -22,7 +22,7 @@ for iP=1:length(Files2Del)
     xASL_TrackProgress(iP,length(Files2Del));
     [~, Ffile, Fext]    = xASL_fileparts(Files2Del{iP});
     
-    PathList    = xASL_adm_GetFileList(x.D.ROOT,['^' File2Search Fext '$'],'FPListRec',[0 Inf]);
+    PathList    = xASL_adm_GetFileList(x.D.ROOT,['^' Ffile Fext '$'],'FPListRec',[0 Inf]);
     for iL=1:length(PathList)
         xASL_delete(PathList{iL});
     end

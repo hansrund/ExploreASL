@@ -164,7 +164,9 @@ else
 
     printedSessionN = 0;
     
-    for iSubjSess=1:length(x.S.SubjectSessionID)
+    Existing_SubjectSessions = 1:length(x.S.SubjectSessionID); % define total amount sessions of all subjects existing in the data
+    
+    for iSubjSess=Existing_SubjectSessions
         % x.S.SubjectSessionID == subject/session IDs created in xASL_stat_GetROIStatistics
 
         % Get subject ID
@@ -215,20 +217,20 @@ else
                             warning('Could not find session data');
                             fprintf(x.S.FID,'\n');
                         else
-                               SessionN = iSubjSess;
-                            if isempty(SessionN) || ~isnumeric(SessionN)
+                            
+                            if isempty(iSubjSess) || ~isnumeric(iSubjSess)
                                 warning(['Something wrong with session ' SessionID]);
                                 fprintf(x.S.FID,'\n');
-                            elseif SessionN>x.dataset.nSessions
-                                if ~max(printedSessionN==SessionN)
+                            elseif iSubjSess>Existing_SubjectSessions
+                                if ~max(printedSessionN==iSubjSess)
                                     warning('Could not find values for other covariates');
                                 end
-                                printedSessionN = [printedSessionN SessionN];
+                                printedSessionN = [printedSessionN iSubjSess];
                                 fprintf(x.S.FID,'\n');
                             else
 
                                 %% Print the covariates and data
-                                iSubjectSession_SetsID = x.dataset.nSessions*(SubjectIndex-1)+SessionN;
+                                iSubjectSession_SetsID = iSubjSess;
                                 iSubjectSession_DAT = iSubjSess;
                                 bPrintSessions = false;
                                 xASL_stat_PrintStats_PrintValues(x, iSubjectSession_SetsID, iSubjectSession_DAT, bPrintSessions);                      
