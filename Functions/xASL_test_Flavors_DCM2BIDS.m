@@ -60,14 +60,18 @@ for iFlavor = 1:length(flavorList)
 		case 'Philips_PCASL_3DGRASE_5.4.1.0_TopUp_1'
 			DirASL = fullfile(baseDirImport, flavorList{iFlavor}, 'temp', 'Sub1', 'ASL_1');
 			
-			% xASL_Move(fullfile(DirASL, 'M0_601_00601.nii'), fullfile(DirASL, 'M0.nii'), 1);
-			% xASL_Move(fullfile(DirASL, 'M0_601_00601.json'), fullfile(DirASL, 'M0.json'), 1);
-			% xASL_Move(fullfile(DirASL, 'M0_701_00701.nii'), fullfile(DirASL, 'M0PERev.nii'), 1);
-			% xASL_Move(fullfile(DirASL, 'M0_701_00701.json'), fullfile(DirASL, 'M0PERev.json'), 1);
-			xASL_Move(fullfile(DirASL, 'M0_601_00001.nii'), fullfile(DirASL, 'M0.nii'), 1);
-			xASL_Move(fullfile(DirASL, 'M0_601_00001.json'), fullfile(DirASL, 'M0.json'), 1);
-			xASL_Move(fullfile(DirASL, 'M0_701_00001.nii'), fullfile(DirASL, 'M0PERev.nii'), 1);
-			xASL_Move(fullfile(DirASL, 'M0_701_00001.json'), fullfile(DirASL, 'M0PERev.json'), 1);
+            % This was quite lazy programming, but at least now this will
+            % work independent of the dcm2niiX version (which may name
+            % these different converted M0s differently ;)
+            
+            % For this specific flavor/case, the M0 with n
+            MoveFileNII = xASL_adm_GetFileList(DirASL, '^M0_.*\.nii$');
+            MoveFileJSON = xASL_adm_GetFileList(DirASL, '^M0_.*\.json$');
+            
+			xASL_Move(MoveFileNII{1}, fullfile(DirASL, 'M0.nii'), 1);
+			xASL_Move(MoveFileJSON{1}, fullfile(DirASL, 'M0.json'), 1);
+			xASL_Move(MoveFileNII{2}, fullfile(DirASL, 'M0PERev.nii'), 1);
+			xASL_Move(MoveFileJSON{2}, fullfile(DirASL, 'M0PERev.json'), 1);
 			
 			% 3c. 'Siemens_PCASL_3DGRASE_VB17A_TopUp_1'
 		case 'Siemens_PCASL_3DGRASE_VB17A_TopUp_1'
