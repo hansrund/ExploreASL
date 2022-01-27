@@ -216,8 +216,9 @@ switch lower(x.Q.LabelingType)
 			for iLD = 1:length(LDs)
 				fprintf(FIDoptionFile, '--tau%d=%.2f\n', iLD, LDs(iLD));
 			end
-		else
-			fprintf(FIDoptionFile, '--tau=%.2f\n', LDs);
+        else
+            fprintf(FIDoptionFile, '--pld=%.2f\n', PLDs)
+            fprintf(FIDoptionFile, '--tau=%.2f\n', LDs);
 		end
 end
 
