@@ -209,6 +209,10 @@ end
 
 if ~isfield(x.Q, 'bUseBasilQuantification') || isempty(x.Q.bUseBasilQuantification)
 	x.Q.bUseBasilQuantification = false;
+    
+    if x.modules.asl.bMultiPLD || x.modules.asl.bMultiTE
+        x.Q.bUseBasilQuantification = true;
+    end
 end
 
 
