@@ -138,6 +138,7 @@ else
     wslString = '';
 end
 if bVerbose
+    % Execution currently fails -> Check command
     Result1 = system([wslString FSLinit FSLoutput NiceString FSLCommand], '-echo');
 else
     Result1 = system([wslString FSLinit FSLoutput NiceString FSLCommand]);

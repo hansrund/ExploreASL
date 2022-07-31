@@ -76,7 +76,7 @@ if ~x.Q.ApplyQuantification(3)
     fprintf('%s\n','We skip the scaling of a.u. to label intensity');
 else
     % Calculate the vector of SliceReadoutTime
-    SliceReadoutTime = xASL_quant_SliceTiming(x,x.P.Path_ASL4D);
+%     SliceReadoutTime = xASL_quant_SliceTiming(x,x.P.Path_ASL4D);
     
  %% 1    PLD scalefactor (gradient if 2D multi-slice)
     % For BASIL the x.Q.SliceReadoutTime is used internally, otherwise

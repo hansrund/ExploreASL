@@ -303,7 +303,7 @@ if isfield(x.S,'SetsID')
 else
     iSetLong_TP = 1;
 end
-
+    
 x.S.SetsName{iSetLong_TP} = 'LongitudinalTimePoint';
 x.S.SetsName{iSetLong_TP+1} = 'SubjectNList';
 x.S.SetsID(:,iSetLong_TP) = TimePoint;

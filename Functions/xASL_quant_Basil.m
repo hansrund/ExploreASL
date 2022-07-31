@@ -74,6 +74,9 @@ function [CBF_nocalib, ATT_map, resultFSL] = xASL_quant_Basil(PWI, x)
     
     %% 5. Run Basil and retrieve CBF output
     % args.bAutomaticallyDetectFSL=1;
+    pathBasilInput = '/mnt/c/Users/user/Research/ASL_Processing/cmdLine_singleGE_copy/derivatives/ExploreASL/sub-P02_1/ASL_1/PWI4D_BasilInput.nii';
+    pathBasilOptions = '/mnt/c/Users/user/Research/ASL_Processing/cmdLine_singleGE_copy/derivatives/ExploreASL/sub-P02_1/ASL_1/Basil_ModelOptions.txt';
+    dirBasilOutput = '/mnt/c/Users/user/Research/ASL_Processing/cmdLine_singleGE_copy/derivatives/ExploreASL/sub-P02_1/ASL_1/BasilOutput';
     [~, resultFSL] = xASL_fsl_RunFSL(['basil -i ' xASL_adm_UnixPath(pathBasilInput) ' -@ ' xASL_adm_UnixPath(pathBasilOptions) ' -o ' xASL_adm_UnixPath(dirBasilOutput) ' ' BasilOptions], x);
     
     % Check if FSL failed

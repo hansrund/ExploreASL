@@ -186,6 +186,11 @@ else
     end
 
     M0_parms = xASL_adm_LoadParms(x.P.Path_M0_parms_mat, x);
+    
+%%  SET THIS MANUALLY FOR NOW -> See if it does any change. 
+    M0_parms.EchoTime = [10.952; 10.952; 10.952; 10.952; 10.952; 10.952; 10.952; 10.952 ]
+
+%%
 
 % %     % Philips dcm2niiX scaling fix:
 % %     % in the new dcm2niiX with the default Philips scaling,

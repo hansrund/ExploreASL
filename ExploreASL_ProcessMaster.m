@@ -98,7 +98,7 @@ function [x] = ExploreASL_ProcessMaster(x)
     end
     
     % -----------------------------------------------------------------------------
-    %% 2    xASL_module_ASL  
+    %% 2    xASL_module_ASL
     if x.opts.ProcessModules(2)==1
         [~, x] = xASL_Iteration(x,'xASL_module_ASL');
         % Now only check the availability of files when not running parallel
